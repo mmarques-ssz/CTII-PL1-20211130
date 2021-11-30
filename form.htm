@@ -1,0 +1,158 @@
+<html>
+
+<head>
+  <title>Strings em JavaScript</title>
+
+  <script language="JavaScript">
+  function ex1a()
+  {
+  var mensagem, i;
+  mensagem = document.frmEntrada.txtMensagem.value;
+
+  document.write("<table border='1'><tr>");
+  for(i=0; i<mensagem.length; ++i)
+  {
+    document.write("<td>" + mensagem.charAt(i) + "</td>");
+  }
+  document.write("</tr></table>");
+  }
+
+  function ex1b()
+  {
+  var mensagem, i;
+  mensagem = document.frmEntrada.txtMensagem.value;
+
+  document.write("<table border='1'>");
+  for(i=0; i<mensagem.length; ++i)
+  {
+    document.write("<tr><td>" + mensagem.charAt(i) + "</td></tr>");
+  }
+  document.write("</table>");
+  }
+
+  function ex2()
+  {
+  var mensagem, caract, qtde, i;
+  caract = document.frmEntrada.txtCaract.value;
+  qtde = parseInt(document.frmEntrada.txtNumero.value);
+
+  mensagem = "";
+  for(i=0; i<qtde; ++i)
+  {
+    mensagem += caract;
+  }
+  
+  document.write("<table border='1'><tr><td>" + mensagem + "</td></tr></table>");
+  }
+
+  function ex3()
+  {
+  var mensagem, i, qtdeV, qtdeC, qtdeD, qtdeX;
+  mensagem = document.frmEntrada.txtMensagem.value;
+
+  qtdeV = 0;
+  qtdeC = 0;
+  qtdeD = 0;
+  qtdeX = 0;
+  
+  for(i=0; i<mensagem.length; ++i)
+  {
+    if (mensagem.charAt(i).toUpperCase()=="A" || mensagem.charAt(i).toUpperCase()=="E" ||
+        mensagem.charAt(i).toUpperCase()=="I" || mensagem.charAt(i).toUpperCase()=="O" ||
+        mensagem.charAt(i).toUpperCase()=="U")
+        {
+          qtdeV++;
+        }
+    else
+       if (mensagem.charCodeAt(i)>=65 && mensagem.charCodeAt(i)<=90 || 
+           mensagem.charCodeAt(i)>=97 && mensagem.charCodeAt(i)<=122)
+           {
+             qtdeC++;
+           }
+        else
+           if (mensagem.charCodeAt(i)>=48 && mensagem.charCodeAt(i)<=57)
+              {
+                qtdeD++;
+              }  
+           else
+              {
+                qtdeX++;
+              }
+  
+  }
+
+  document.write("<table border='1'>");
+  document.write("<tr><td>Qtde de vogais:</td><td>" + qtdeV + "</td></tr>");
+  document.write("<tr><td>Qtde de consoantes:</td><td>" + qtdeC + "</td></tr>");
+  document.write("<tr><td>Qtde de digitos:</td><td>" + qtdeD + "</td></tr>");
+  document.write("<tr><td>Qtde de outros caracteres:</td><td>" + qtdeX + "</td></tr>");
+  document.write("</table>");
+  }
+
+  function ex4()
+  {
+  var mensagem, semEspacos, invertida, i;
+  mensagem = document.frmEntrada.txtMensagem.value;
+
+  semEspacos = "";
+  for(i=0; i<mensagem.length; ++i)
+  {
+    if (mensagem.charAt(i)!=" ")
+    {
+      semEspacos += mensagem.charAt(i);
+    }
+  }
+
+  invertida = "";
+  for(i=semEspacos.length-1; i>=0; --i)
+  {
+    invertida += semEspacos.charAt(i);
+  }
+
+  document.write("<table border='1'>");
+  document.write("<tr><td>" + semEspacos + "</td></tr>");
+  document.write("<tr><td>" + invertida + "</td></tr>");
+  document.write("<tr><td>" + (semEspacos==invertida?"Palindromo":"Não eh palindromo") + "</td></tr>");
+  document.write("</table>");
+  }
+
+  function ex5()
+  {
+  var nomeOriginal, nomeCatalogo, i, posUltimoNome;
+  nomeOriginal = document.frmEntrada.txtMensagem.value;
+
+
+  posUltimoNome = nomeOriginal.lastIndexOf(" ");
+  nomeCatalogo = nomeOriginal.substr(posUltimoNome+1, nomeOriginal.length - posUltimoNome) + ", " +
+                 nomeOriginal.substr(0, posUltimoNome);
+  
+  document.write("<table border='1'>");
+  document.write("<tr><td>" + nomeOriginal + "</td></tr>");
+  document.write("<tr><td>" + nomeCatalogo + "</td></tr>");
+  document.write("</table>");
+  }
+
+
+
+  </script>
+
+</head>
+
+<body>
+
+<form name="frmEntrada">
+Texto:<input type="text" name="txtMensagem" value="JOAO SILVA SANTOS"><br>
+Caracter:<input type="text" name="txtCaract" value="#"><br>
+Número:<input type="text" name="txtNumero" value="20"><br>
+
+<input type="button" name="btnEx1a" value="Exercicio 1a" onClick="ex1a()"><br>
+<input type="button" name="btnEx1b" value="Exercicio 1b" onClick="ex1b()"><br>
+<input type="button" name="btnEx2" value="Exercicio 2" onClick="ex2()"><br>
+<input type="button" name="btnEx3" value="Exercicio 3" onClick="ex3()"><br>
+<input type="button" name="btnEx4" value="Exercicio 4" onClick="ex4()"><br>
+<input type="button" name="btnEx5" value="Exercicio 5" onClick="ex5()"><br>
+</form>
+
+</body>
+
+</html>
